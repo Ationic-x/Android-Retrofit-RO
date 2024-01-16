@@ -7,8 +7,8 @@
     <string name="race">Race</string>
     <string name="property">Property</string>
     <string name="size">Size</string>
-    <string name="hit">Hit(100%)</string>
-    <string name="flee">Flee(95%)</string>
+    <string name="hit">Hit (100%)</string>
+    <string name="flee">Flee (95%)</string>
     <string name="walkSpeed">Walk Speed</string>
     <string name="AtkDelay">Atk Delay</string>
     <string name="atk">Attack</string>
@@ -36,12 +36,60 @@
     <string name="wind">Wind</string>
     <string name="poison">Poison</string>
     <string name="holy">Holy</string>
-    <string name="shadow">Shadow</string>
+    <string name="shadow">Dark</string>
     <string name="ghost">Ghost</string>
     <string name="undead">Undead</string>
     <string name="Mode">Mode</string>
     <string name="elements">Elements</string>
     <string name="aegisName">(%1$s)</string>
-    <string name="id">Mob-ID#%1$s</string>
     <string name="aspd">Aspd</string>
+    <string name="id">ID: %1$s</string>
+    <string name="cElement">"Element: "</string>
+    <string name="cRace">"Race: "</string>
+    <string name="cSize">"Size: "</string>
+    <string name="cLevel">"Level"</string>
+    <string name="blank">Blank means any</string>
+    <string name="cExp">"Base exp"</string>
+    <string name="cJExp">"Job Exp"</string>
+    <string name="cName">"Name: "</string>
+    <string name="search">Search</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
+    <string-array name="value_array">
+        <item>==</item>
+        <item>\u003C</item>
+        <item>\u003E</item>
+    </string-array>
+    <string-array name="element_array">
+        <item>Any</item>
+        <item>Neutral</item>
+        <item>Water</item>
+        <item>Earth</item>
+        <item>Fire</item>
+        <item>Wind</item>
+        <item>Poison</item>
+        <item>Holy</item>
+        <item>Dark</item>
+        <item>Ghost</item>
+        <item>Undead</item>
+    </string-array>
+    <string-array name="race_array">
+        <item>Any</item>
+        <item>Formless</item>
+        <item>Undead</item>
+        <item>Brute</item>
+        <item>Plant</item>
+        <item>Insect</item>
+        <item>Fish</item>
+        <item>Demon</item>
+        <item>Demihuman</item>
+        <item>Angel</item>
+        <item>Dragon</item>
+    </string-array>
+    <string-array name="size_array">
+        <item>Any</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
 </resources>

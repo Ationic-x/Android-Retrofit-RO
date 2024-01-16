@@ -8,7 +8,7 @@
         android:background="@color/sky">
     <LinearLayout
             android:layout_columnSpan="4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:orientation="horizontal"
@@ -19,13 +19,14 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
+        <!--
         <TextView
                 android:padding="5dp"
                 android:id="@+id/aegisName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/aegisName"/>
+                -->
 
         <TextView
                 android:padding="5dp"
@@ -39,7 +40,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/elements"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:layout_gravity="fill"
@@ -49,7 +50,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -59,27 +60,38 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/hp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_height="wrap_content"/>
-
-    <ImageView
-            android:id="@+id/img"
+    <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_columnSpan="2"
             android:layout_rowSpan="6"
-            android:background="@color/graymore"/>
+            android:background="@color/graymore">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleX="2.5"
+            android:scaleY="2.5"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"/>
+    </FrameLayout>
 
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -89,7 +101,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/neutral"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -98,7 +110,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -108,7 +120,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/lvl"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -117,7 +129,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -127,7 +139,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/water"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -136,7 +148,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -146,7 +158,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/race"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -155,7 +167,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -165,7 +177,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/earth"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -173,7 +185,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -183,7 +195,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/property"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -192,7 +204,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -202,7 +214,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/fire"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -210,7 +222,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -220,7 +232,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/size"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -229,7 +241,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -239,7 +251,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/wind"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -248,7 +260,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -258,7 +270,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/hit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -267,7 +279,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -277,7 +289,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/poison"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -286,7 +298,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -296,7 +308,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/flee"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -305,7 +317,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -315,7 +327,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/base_exp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -324,7 +336,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -334,7 +346,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/holy"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -343,7 +355,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -353,7 +365,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/walk_speed"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -362,7 +374,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -372,7 +384,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/job_exp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -381,7 +393,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -391,7 +403,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/shadow"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -400,7 +412,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -410,7 +422,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/atk_delay"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -419,7 +431,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -429,7 +441,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/base_exp_hp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -438,7 +450,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -448,7 +460,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/ghost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -457,7 +469,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -467,7 +479,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/atk"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -476,7 +488,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -486,7 +498,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/job_exp_hp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -495,7 +507,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -505,7 +517,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/undead"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -515,7 +527,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -525,7 +537,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/def"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -534,7 +546,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -544,7 +556,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/aspd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -552,7 +564,7 @@
 
 
     <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -587,7 +599,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -597,7 +609,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/magic_def"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -606,19 +618,19 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_columnSpan="2"
-            android:background="@color/graymore"
+            android:background="@color/darkblue"
     />
 
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -628,7 +640,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/atk_range"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -636,7 +648,7 @@
 
 
     <GridLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -777,7 +789,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -787,7 +799,7 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/spell_range"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -796,7 +808,7 @@
 
     <TextView
             android:padding="5dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
@@ -806,9 +818,15 @@
     <TextView
             android:padding="5dp"
             android:id="@+id/sight_range"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"/>
+
+    <LinearLayout android:layout_columnSpan="6"
+                  android:layout_width="0dp"
+                  android:layout_height="15dp"
+                  android:layout_gravity="fill"
+                  android:background="@color/black"/>
 </GridLayout>

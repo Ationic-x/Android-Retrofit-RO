@@ -6,22 +6,185 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".MainFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <SearchView
-                android:id="@+id/texto"
+        <LinearLayout
+                android:id="@+id/expandable_area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/rv_contenidos"/>
+                app:layout_constraintBottom_toTopOf="@id/expand_option"
+                android:orientation="vertical">
+            <GridLayout
+                    android:id="@+id/searcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/graymore"
+                    android:columnCount="3"
+                    android:padding="5dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cName"/>
+
+                    <EditText
+                            android:id="@+id/iName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/blank"
+                            android:layout_marginEnd="15dp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cElement"/>
+
+                    <Spinner
+                            android:id="@+id/ele_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_columnSpan="3"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cRace"/>
+
+                    <Spinner
+                            android:id="@+id/race_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cSize"/>
+
+                    <Spinner
+                            android:id="@+id/size_spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cLevel"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <Spinner
+                        android:id="@+id/level_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <EditText
+                        android:id="@+id/iLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/blank"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cExp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <Spinner
+                        android:id="@+id/bexp_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <EditText
+                        android:id="@+id/iBexp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/blank"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cJExp"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <Spinner
+                        android:id="@+id/jexp_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:gravity="center_vertical"/>
+
+                <EditText
+                        android:id="@+id/iJexp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/blank"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"/>
+            </GridLayout>
+            <Button
+                    android:id="@+id/btn_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search"
+                    android:background="@color/darkblue"
+                    app:layout_constraintTop_toBottomOf="@id/searcher"/>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/expand_option"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/expandable_area"
+                app:layout_constraintBottom_toTopOf="@id/rv_contenidos"
+                android:background="@color/black">
+            <TextView
+                    android:id="@+id/option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/collapse"
+                    android:textColor="@color/white"
+                    android:gravity="end"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_contenidos"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="0dp"
-                                                   app:layout_constraintTop_toBottomOf="@+id/texto"
+                                                   app:layout_constraintTop_toBottomOf="@id/expand_option"
                                                    app:layout_constraintLeft_toLeftOf="parent"
                                                    app:layout_constraintRight_toRightOf="parent"
                                                    app:layout_constraintBottom_toBottomOf="parent"
