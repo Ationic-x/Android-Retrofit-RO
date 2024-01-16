@@ -9,7 +9,15 @@ import retrofit2.http.*;
 import java.util.List;
 
 public class Main {
-    public static class Ai{
+
+    public static class AllMobs {
+        @Json(name = "documents")
+        public List<Mob> mobs;
+        @Json(name = "nextPageToken")
+        public String nextPageToken;
+    }
+
+    public static class Ai {
         @Json(name = "mapValue")
         public MapValue mapValue;
     }
@@ -23,12 +31,12 @@ public class Main {
         public List<Drop> drops;
     }
 
-    public static class ElementStats{
+    public static class ElementStats {
         @Json(name = "mapValue")
         public MapValue mapValue;
     }
 
-    public static class Fields{
+    public static class Fields {
         @Json(name = "Luk")
         public IntegerValue luk;
         @Json(name = "Dex")
@@ -161,25 +169,18 @@ public class Main {
         @Json(name = "SkillImmune")
         public BooleanValue skillImmune;
     }
-    public static class MapValue{
+
+    public static class MapValue {
         @Json(name = "fields")
         public Fields fields;
     }
 
-    public static class Modes{
+    public static class Modes {
         @Json(name = "mapValue")
         public MapValue mapValue;
     }
 
-    public static class AllMobs {
-        @Json(name = "documents")
-        public List<Mob> mobs;
-        @Json(name = "nextPageToken")
-        public String nextPageToken;
-    }
-
     // Drops Case
-
     public static class AllDrops {
         @Json(name = "documents")
         public List<Drop> drops;
@@ -199,17 +200,17 @@ public class Main {
     }
 
     // Generics
-    public static class IntegerValue{
+    public static class IntegerValue {
         @Json(name = "integerValue")
         public String integerValue;
     }
 
-    public static class StringValue{
+    public static class StringValue {
         @Json(name = "stringValue")
         public String stringValue;
     }
 
-    public static class BooleanValue{
+    public static class BooleanValue {
         @Json(name = "booleanValue")
         public Boolean booleanValue;
     }
@@ -221,7 +222,7 @@ public class Main {
             .create(Api.class);
 
     public interface Api {
-        @GET("documents/mobs/")
-        Call<AllMobs> getMobs(@Query("pageToken") String pageToken);
+        @GET("documents/{id}/")
+        Call<AllMobs> getMobs(@Path("id") String id, @Query("pageToken") String pageToken);
     }
 }

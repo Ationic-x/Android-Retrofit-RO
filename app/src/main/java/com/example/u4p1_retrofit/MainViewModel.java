@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 public class MainViewModel extends AndroidViewModel {
     private final MutableLiveData<List<Main.Mob>> mobsLiveData;
-    private Main.AllMobs allMobs;
+    private static final String uri = "mobs";
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -36,16 +36,16 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void getAll(Context context) {
-        File archivo = context.getFileStreamPath("mobs.json");
-        if(archivo.exists()){
+        File file = context.getFileStreamPath("mobs.json");
+        if (file.exists()) {
             Log.d("MainViewModel", "Calling from file");
-            if(mobsLiveData.getValue() == null) {
+            if (mobsLiveData.getValue() == null) {
                 try {
-                    BufferedSource bufferedSource = Okio.buffer(Okio.source(archivo));
+                    BufferedSource bufferedSource = Okio.buffer(Okio.source(file));
                     Moshi moshi = new Moshi.Builder().build();
                     JsonAdapter<Main.AllMobs> jsonAdapter = moshi.adapter(Main.AllMobs.class);
                     Main.AllMobs allMobs = jsonAdapter.fromJson(bufferedSource);
-                    if(allMobs != null) {
+                    if (allMobs != null) {
                         mobsLiveData.postValue(allMobs.mobs);
                     }
                 } catch (IOException ioe) {
@@ -53,23 +53,12 @@ public class MainViewModel extends AndroidViewModel {
                 }
             }
         } else {
-            obtenerMobsPagina(null);
-            if(allMobs != null) {
-                try {
-                    Moshi moshi = new Moshi.Builder().build();
-                    JsonAdapter<Main.AllMobs> jsonAdapter = moshi.adapter(Main.AllMobs.class);
-                    FileOutputStream outputStream = context.openFileOutput("mobs.json", Context.MODE_PRIVATE);
-                    outputStream.write(jsonAdapter.toJson(allMobs).getBytes());
-                    outputStream.close();
-                } catch (IOException ioe) {
-                    Log.d("MainViewModel", ioe.getMessage());
-                }
-            }
+            obtenerMobsPagina(null, context);
         }
     }
 
-    private void obtenerMobsPagina(String nextPageToken) {
-        Main.api.getMobs(nextPageToken).enqueue(new Callback<Main.AllMobs>() {
+    private void obtenerMobsPagina(String nextPageToken, Context context) {
+        Main.api.getMobs(uri, nextPageToken).enqueue(new Callback<Main.AllMobs>() {
             @Override
             public void onResponse(Call<Main.AllMobs> call, Response<Main.AllMobs> response) {
                 if (response.isSuccessful()) {
@@ -82,11 +71,20 @@ public class MainViewModel extends AndroidViewModel {
                         mobsActuales.addAll(allMobs.mobs);
                         mobsLiveData.setValue(mobsActuales);
 
+                        // In case to see all the values just use allMobs.nextPageToken
                         if (nextPageToken != null && !nextPageToken.isEmpty()) {
-                            obtenerMobsPagina(nextPageToken);
+                            obtenerMobsPagina(nextPageToken, context);
                         } else {
                             allMobs.mobs = mobsLiveData.getValue();
-                            MainViewModel.this.allMobs = allMobs;
+                            try {
+                                Moshi moshi = new Moshi.Builder().build();
+                                JsonAdapter<Main.AllMobs> jsonAdapter = moshi.adapter(Main.AllMobs.class);
+                                FileOutputStream outputStream = context.openFileOutput("mobs.json", Context.MODE_PRIVATE);
+                                outputStream.write(jsonAdapter.toJson(allMobs).getBytes());
+                                outputStream.close();
+                            } catch (IOException ioe) {
+                                Log.d("MainViewModel", ioe.getMessage());
+                            }
                         }
                     }
                 } else {
@@ -101,30 +99,34 @@ public class MainViewModel extends AndroidViewModel {
         });
     }
 
-    public void filterMobs(Context context, String name, String element, String race, String size, int spLevel, String level, int spBExp, String bExp, int spJExp, String jExp){
-        File archivo = context.getFileStreamPath("mobs.json");
-        if(archivo.exists()){
+    public void filterMobs(Context context, String name, String element, String race, String size, int spLevel, String level, int spBExp, String bExp, int spJExp, String jExp) {
+        File file = context.getFileStreamPath("mobs.json");
+        if (file.exists()) {
             try {
-                BufferedSource bufferedSource = Okio.buffer(Okio.source(archivo));
+                BufferedSource bufferedSource = Okio.buffer(Okio.source(file));
                 Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<Main.AllMobs> jsonAdapter = moshi.adapter(Main.AllMobs.class);
                 Main.AllMobs allMobs = jsonAdapter.fromJson(bufferedSource);
-                if(allMobs != null) {
-                    if(!name.isEmpty())  allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.name.stringValue.toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
-                    if(!element.equals("Any"))  allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.element.stringValue.toLowerCase().equals(element.toLowerCase())).collect(Collectors.toList());
-                    if(!race.equals("Any")) allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.race.stringValue.toLowerCase().equals(race.toLowerCase())).collect(Collectors.toList());
-                    if(!race.equals("Any")) allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.race.stringValue.toLowerCase().equals(size.toLowerCase())).collect(Collectors.toList());
+                if (allMobs != null) {
+                    if (!name.isEmpty())
+                        allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.name.stringValue.toLowerCase().contains(name.toLowerCase())).collect(Collectors.toList());
+                    if (!element.equals("Any"))
+                        allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.element.stringValue.toLowerCase().equals(element.toLowerCase())).collect(Collectors.toList());
+                    if (!race.equals("Any"))
+                        allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.race.stringValue.toLowerCase().equals(race.toLowerCase())).collect(Collectors.toList());
+                    if (!race.equals("Any"))
+                        allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.race.stringValue.toLowerCase().equals(size.toLowerCase())).collect(Collectors.toList());
                     try {
-                        if (!level.isEmpty()){
-                            switch (spLevel){
+                        if (!level.isEmpty()) {
+                            switch (spLevel) {
                                 case 0:
                                     allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.level.integerValue.toLowerCase().equals(level.toLowerCase())).collect(Collectors.toList());
                                     break;
                                 case 1:
                                     allMobs.mobs = allMobs.mobs.stream().filter(mob -> {
-                                                    int mobLevel = Integer.parseInt(mob.fields.level.integerValue);
-                                                    int filterLevel = Integer.parseInt(level);
-                                                    return mobLevel < filterLevel;
+                                                int mobLevel = Integer.parseInt(mob.fields.level.integerValue);
+                                                int filterLevel = Integer.parseInt(level);
+                                                return mobLevel < filterLevel;
                                             })
                                             .collect(Collectors.toList());
                                     break;
@@ -138,9 +140,9 @@ public class MainViewModel extends AndroidViewModel {
                                     break;
                             }
                         }
-                        if (!bExp.isEmpty()){
+                        if (!bExp.isEmpty()) {
                             int filterBaseExp = Integer.parseInt(bExp);
-                            switch (spBExp){
+                            switch (spBExp) {
                                 case 0:
                                     allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.baseExp.integerValue.toLowerCase().equals(bExp.toLowerCase())).collect(Collectors.toList());
                                     break;
@@ -160,9 +162,9 @@ public class MainViewModel extends AndroidViewModel {
                                     break;
                             }
                         }
-                        if (!jExp.isEmpty()){
+                        if (!jExp.isEmpty()) {
                             int filterJobExp = Integer.parseInt(jExp);
-                            switch (spJExp){
+                            switch (spJExp) {
                                 case 0:
                                     allMobs.mobs = allMobs.mobs.stream().filter(mob -> mob.fields.jobExp.integerValue.toLowerCase().equals(jExp.toLowerCase())).collect(Collectors.toList());
                                     break;
@@ -182,7 +184,7 @@ public class MainViewModel extends AndroidViewModel {
                                     break;
                             }
                         }
-                    } catch (NumberFormatException e){
+                    } catch (NumberFormatException e) {
                         Toast.makeText(context, "Someone of this field are wrong: Level, Base Exp or Job Exp", Toast.LENGTH_SHORT).show();
                     }
                     mobsLiveData.postValue(allMobs.mobs);
@@ -190,6 +192,7 @@ public class MainViewModel extends AndroidViewModel {
             } catch (IOException ioe) {
                 Log.d("MainViewModel", ioe.getMessage());
             }
-        };
+        }
+        ;
     }
 }
